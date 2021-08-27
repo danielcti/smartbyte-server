@@ -1,6 +1,8 @@
+require("dotenv").config();
 import express from "express";
 import cors from "cors";
-// import routes from "./routes";
+import routes from "./routes";
+import connectFromDatabase from "./config/mongodb";
 
 class App {
   server: any;
@@ -9,6 +11,7 @@ class App {
     this.server = express();
     this.middlewares();
     this.routes();
+    connectFromDatabase();
   }
 
   middlewares() {
@@ -17,7 +20,7 @@ class App {
   }
 
   routes() {
-    // this.server.use(routes);
+    this.server.use(routes);
   }
 }
 
