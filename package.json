@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "nodemon src/server.ts",
+    "postinstall": "npm run build",
     "build": "tsc --project ./",
-    "start": "node build/index.js"
+    "start": "node build/server.js"
   },
   "license": "MIT",
   "dependencies": {
