@@ -6,6 +6,10 @@ const CourseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     tags: [
       {
         name: String,
@@ -16,6 +20,7 @@ const CourseSchema = new mongoose.Schema(
         class_id: String,
       },
     ],
+    logo_url: String,
   },
   {
     timestamps: true,

@@ -11,6 +11,7 @@ const ClassSchema = new mongoose.Schema(
       required: true,
     },
     duration: Number,
+    logo_url: String,
   },
   {
     timestamps: true,

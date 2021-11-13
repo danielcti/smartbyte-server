@@ -17,13 +17,23 @@ class UserClassController {
         if (course.course_id === request.params.courseId) {
           course.classes.push({
             class_id: request.params.classId,
-            last_video_time_watched: 0,
+            last_video_time_watched: request.body.last_video_time_watched || 0,
           });
         }
       });
-
-      await user.save();
+    } else {
+      user.courses.forEach((course: any) => {
+        if (course.course_id === request.params.courseId) {
+          course.classes.forEach((_class: any) => {
+            if (_class.class_id === request.params.classId) {
+              _class.last_video_time_watched =
+                request.body.last_video_time_watched;
+            }
+          });
+        }
+      });
     }
+    await user.save();
 
     return response.status(200).json(user);
   }

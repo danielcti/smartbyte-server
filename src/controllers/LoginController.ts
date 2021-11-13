@@ -19,9 +19,7 @@ class LoginController {
     }
     const match = await bcrypt.compare(password, user.password_hash);
     if (match) {
-      return response.status(200).json({
-        message: "User authenticated.",
-      });
+      return response.status(200).json(user);
     }
 
     return response.status(401).json({
